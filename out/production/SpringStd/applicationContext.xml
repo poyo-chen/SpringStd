@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        <bean>:定義Spring所管理的物件
+        id:該物件的唯一標示，不可重複!通過class獲取bean可以不設置
+        class:此物件所屬的類別
+    -->
+    <bean id="person" class="com.spring.mod.Person">
+        <!--
+            <property>:為物件的屬性賦值
+            name:屬性名
+            value:屬性值
+        -->
+        <property name="id" value="1111"/>
+        <property name="name" value="小明"/>
+    </bean>
+
+    <bean id="person" class="com.spring.mod.Person">
+        <property name="id" value="2222 "/>
+        <property name="name" value="小洪"/>
+    </bean>
+
+</beans>
