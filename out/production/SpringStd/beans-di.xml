@@ -94,8 +94,8 @@
         <property name="bossMap">
             <map>
                 <!--
-                description:
-                entry:
+                description:描述
+                entry:作為Map的鍵和值的屬性定義
                 -->
                 <entry>
                     <key>
