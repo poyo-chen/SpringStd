@@ -9,7 +9,7 @@ public class TestBySpring {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        通過getBean()獲取物件
 //       Person person=(Person)ac.getBean("person");
-        Person person = ac.getBean(Person.class);
+        Person person = ac.getBean("person2",Person.class);
         System.out.println(person);
     }
 }

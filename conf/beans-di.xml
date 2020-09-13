@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="s1" class="com.spring.di.Student">
+        <!--
+        利用seter賦值
+        -->
+        <property name="id" value="10001"/>
+        <property name="name" value="張三"/>
+        <property name="age" value="20"/>
+        <property name="sex" value="男"/>
+        <property name="score" value="100"/>
+    </bean>
+
+    <bean id="s2" class="com.spring.di.Student">
+        <!--
+        利用建構子賦值
+        index:索引值參考位置
+        type:類型
+        ref:賦予該物件所賦予的值
+         -->
+        <constructor-arg value="10086"></constructor-arg>
+        <constructor-arg value="李四"></constructor-arg>
+        <constructor-arg value="34"></constructor-arg>
+        <constructor-arg value="女"></constructor-arg>
+    </bean>
+
+    <bean id="s3" class="com.spring.di.Student">
+        <constructor-arg value="10082"></constructor-arg>
+        <constructor-arg value="王武"></constructor-arg>
+        <constructor-arg value="34"></constructor-arg>
+        <constructor-arg value="男"></constructor-arg>
+        <constructor-arg value="90" index="4" type="java.lang.Double"></constructor-arg>
+    </bean>
+
+    <bean id="s4" class="com.spring.di.Student" p:id="10303" p:name="兆六" p:age="26" p:sex="女" p:teacher-ref="teacher"/>
+
+    <bean id="s5" class="com.spring.di.Student">
+        <property name="id" value="10055"></property>
+        <property name="name" value="張三三"></property>
+        <property name="age" value="23"/>
+        <property name="sex" value="男"/>
+        <property name="teacher" ref="teacher"></property>
+        <property name="teacher.tname" value="小紅"/>
+    </bean>
+    <bean id="teacher" class="com.spring.di.Teacher">
+        <property name="tid" value="100001"/>
+        <property name="tname" value="老名"/>
+    </bean>
+
+    <bean id="s6" class="com.spring.di.Student">
+        <property name="id" value="10055"></property>
+        <property name="name" value="張三三"></property>
+        <property name="age" value="23"/>
+        <property name="sex" value="男"/>
+        <property name="teacher">
+            <bean id="tt" class="com.spring.di.Teacher">
+                <property name="tid" value="222"></property>
+                <property name="tname" value="admin"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="t1" class="com.spring.di.Teacher">
+        <property name="tid" value="000"></property>
+        <property name="tname" value="小東"/>
+        <property name="cls">
+            <list>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="t2" class="com.spring.di.Teacher">
+        <property name="tid" value="1002"/>
+        <property name="tname" value="小吳"/>
+        <property name="studentList">
+            <list>
+                <ref bean="s1"/>
+                <ref bean="s2"/>
+                <ref bean="s3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="t3" class="com.spring.di.Teacher">
+        <property name="tid" value="1003"/>
+        <property name="tname" value="boss"/>
+        <property name="bossMap">
+            <map>
+                <!--
+                description:描述
+                entry:作為Map的鍵和值的屬性定義
+                -->
+                <entry>
+                    <key>
+                        <value>10001</value>
+                    </key>
+                    <value>大吳</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
