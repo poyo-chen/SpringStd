@@ -24,7 +24,7 @@ public class Test {
             System.out.println(std);
         }
 
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 4; i++) {
             Teacher teacher = ac.getBean("t" + i, Teacher.class);
             System.out.println(teacher);
         }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="s1" class="com.spring.di.Student">
         <!--
@@ -107,4 +107,15 @@
         </property>
     </bean>
 
+    <bean id="t4" class="com.spring.di.Teacher">
+        <property name="tid" value="1004"/>
+        <property name="tname" value="root"/>
+        <property name="studentList" ref="students"/>
+    </bean>
+
+    <util:list id="students">
+        <ref bean="s5"/>
+        <ref bean="s4"/>
+        <ref bean="s6"/>
+    </util:list>
 </beans>
