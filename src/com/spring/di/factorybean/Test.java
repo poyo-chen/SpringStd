@@ -1,6 +1,5 @@
-package com.spring.factorybean;
+package com.spring.di.factorybean;
 
-import javafx.application.Application;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

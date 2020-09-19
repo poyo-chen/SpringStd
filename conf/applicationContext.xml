@@ -7,7 +7,7 @@
         id:該物件的唯一標示，不可重複!通過class獲取bean可以不設置
         class:此物件所屬的類別
     -->
-    <bean id="person1" class="com.spring.mod.Person">
+    <bean id="person1" class="com.spring.di.mod.Person">
         <!--
             <property>:為物件的屬性賦值
             name:屬性名
@@ -17,7 +17,7 @@
         <property name="name" value="小明"/>
     </bean>
 
-    <bean id="person2" class="com.spring.mod.Person">
+    <bean id="person2" class="com.spring.di.mod.Person">
         <property name="id" value="2222 "/>
         <property name="name" value="小洪"/>
     </bean>

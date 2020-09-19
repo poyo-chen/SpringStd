@@ -1,4 +1,4 @@
-package com.spring.mod;
+package com.spring.di.mod;
 
 public class Person {
 

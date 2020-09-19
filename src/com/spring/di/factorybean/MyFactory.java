@@ -1,4 +1,4 @@
-package com.spring.factorybean;
+package com.spring.di.factorybean;
 
 import org.springframework.beans.factory.FactoryBean;
 

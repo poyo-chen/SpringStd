@@ -1,4 +1,4 @@
-package com.spring.mod;
+package com.spring.di.mod;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
