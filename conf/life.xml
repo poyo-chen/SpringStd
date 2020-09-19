@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        init-method:容器初始化物件，所呼叫的方法
+        destroy-method:容器銷毀物件，所呼叫的方法
+    -->
+    <bean id="person" class="com.spring.ioc.life.Person" init-method="init" destroy-method="destroy">
+        <property name="id" value="1001"/>
+        <property name="sex" value="男"/>
+    </bean>
+</beans>
