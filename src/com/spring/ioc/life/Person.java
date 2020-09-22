@@ -14,7 +14,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Four:使用";
+        return "Four: Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
     }
 
     public void destroy() {

@@ -10,4 +10,6 @@
         <property name="id" value="1001"/>
         <property name="sex" value="男"/>
     </bean>
+
+    <bean class="com.spring.ioc.life.AfterHandler"></bean>
 </beans>
