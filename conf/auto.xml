@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        autowire:自動配置
+        byName:根據bean:id屬性自動配置
+        byType:根據bean:class屬性自動配置 找到一個能夠為他賦值的 (父類,介面)
+      -->
+    <bean id="emp" class="com.spring.ioc.auto.Emp" autowire="byType">
+        <property name="eid" value="1001"/>
+        <property name="ename" value="David"/>
+<!--        <property name="car" ref="car"></property>-->
+<!--        <property name="dept" ref="dept"/>-->
+    </bean>
+
+    <bean id="car" class="com.spring.ioc.auto.Car">
+        <property name="cid" value="666"/>
+        <property name="cname" value="Peter"/>
+    </bean>
+
+    <bean id="dept" class="com.spring.ioc.auto.Dept">
+        <property name="did" value="777"/>
+        <property name="dname" value="RD"/>
+    </bean>
+</beans>
