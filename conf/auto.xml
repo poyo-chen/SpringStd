@@ -4,9 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--
-        autowire:自動配置
-        byName:根據bean:id屬性自動配置
-        byType:根據bean:class屬性自動配置 找到一個能夠為他賦值的 (父類,介面)
+        autowire:根據某種策略自動為非字面輛屬性賦值
+        byName:根據屬姓名和spring容器中的bean:id屬性比較，若一致則自動配置
+        byType:通過spring容器的bean:class屬性自動配置 找到兼容性為他賦值的 (父類,介面)
+                在使用byType的過程中，要求spring容器至中只能有一個能為屬性賦值的bean。
+        選擇建議: 問題1:當設置autowire屬性，會作用於所有非字面量屬性，因此誰都不用。
       -->
     <bean id="emp" class="com.spring.ioc.auto.Emp" autowire="byType">
         <property name="eid" value="1001"/>
