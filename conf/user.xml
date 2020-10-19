@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        <context:component-scan>:掃描物件，對設置的包下面的類進行掃描，會將加上註解的類作為Spring的物件進行加載
+        物件:Spring管理的bean
+        作為Spring的物件進行加載:會自動在Spring的配置文件中生成相對應的bean，這些bean的id會以類的首字母小寫為值
+    -->
+    <!--
+        base-package:掃描的包
+        use-default-filters:是否自動掃描預設
+        type:
+            annotation:根據註解
+            
+    -->
+    <context:component-scan base-package="com.spring.ioc.userMod" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller "/>
+    </context:component-scan>
+
+<!--
+        <bean id="userController" class="com.spring.ioc.userMod.controller.UserController"/>
+        <bean id="userService" class="com.spring.ioc.userMod.service.UserServiceImpl"/>
+        <bean id="userDao" class="com.spring.ioc.userMod.dao.UserDaoImpl"/>
+-->
+
+</beans>
