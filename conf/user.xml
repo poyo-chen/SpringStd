@@ -12,12 +12,18 @@
     <!--
         base-package:掃描的包
         use-default-filters:是否自動掃描預設
+            false:一個都不掃描
+            true:全都掃描
+        <context:include-filter>:在設定的結構下，再次透過註解或類型包含某幾個類，一定要設定use-default-filters="false"
+        <context:exclude-filter>:在設定的結構下，再次透過註解或類型排除某幾個類，一定要設定use-default-filters="true"
+        包含、排除可重複但不可同時出現
         type:
             annotation:根據註解
-            
+            assignable:根據類別
     -->
     <context:component-scan base-package="com.spring.ioc.userMod" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller "/>
+        <context:exclude-filter type="assignable" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
 <!--
