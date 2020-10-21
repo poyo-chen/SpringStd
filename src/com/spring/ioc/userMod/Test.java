@@ -13,10 +13,13 @@ public class Test {
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("user.xml");
         UserController uc = ac.getBean("userController", UserController.class);
-        System.out.println(uc);
-        UserService us = ac.getBean("userService", UserServiceImpl.class);
-        System.out.println(us);
-        UserDao ud = ac.getBean("userDao", UserDaoImpl.class);
-        System.out.println(ud);
+        System.out.println("uc:"+uc);
+        UserService us = ac.getBean("userServiceImpl", UserServiceImpl.class);
+        System.out.println("us:"+us);
+        UserDao ud = ac.getBean("userDaoImpl", UserDaoImpl.class);
+        System.out.println("ud:"+ud);
+
+        uc.addUser();
+
     }
 }

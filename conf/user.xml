@@ -21,15 +21,18 @@
             annotation:根據註解
             assignable:根據類別
     -->
-    <context:component-scan base-package="com.spring.ioc.userMod" use-default-filters="false">
+    <context:component-scan base-package="com.spring.ioc.userMod" use-default-filters="true">
+<!--
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller "/>
         <context:exclude-filter type="assignable" expression="org.springframework.stereotype.Service"/>
+-->
     </context:component-scan>
-
 <!--
+
         <bean id="userController" class="com.spring.ioc.userMod.controller.UserController"/>
         <bean id="userService" class="com.spring.ioc.userMod.service.UserServiceImpl"/>
         <bean id="userDao" class="com.spring.ioc.userMod.dao.UserDaoImpl"/>
 -->
+
 
 </beans>
