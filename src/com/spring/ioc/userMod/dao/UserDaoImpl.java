@@ -7,7 +7,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addUser() {
-        System.out.println("add commit");
+        System.out.println("UserDaoImpl add commit");
     }
 
     public UserDaoImpl() {
