@@ -1,5 +1,6 @@
 package com.spring.ioc.userMod.controller;
 
+import com.spring.ioc.userMod.dao.UserDao;
 import com.spring.ioc.userMod.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    
     public  void addUser(){
         userService.addUser();
     }
