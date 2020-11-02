@@ -1,7 +1,9 @@
 package com.spring.aop;
 
-public class MathImpl implements MathI {
+import org.springframework.stereotype.Component;
 
+@Component
+public class MathImpl implements MathI {
 
     @Override
     public int add(int i, int j) {
