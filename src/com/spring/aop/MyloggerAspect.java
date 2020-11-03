@@ -1,6 +1,7 @@
 package com.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -40,11 +41,38 @@ public class MyloggerAspect {
     @AfterReturning(value = "execution(* com.spring.aop.*.*(..))", returning = "result")
     public void afterReturningMethod(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
-        System.out.println("返回通知 methodName:" + methodName +  ", result" + result);
+        System.out.println("返回通知 methodName:" + methodName + ", result" + result);
     }
 
-    @AfterThrowing
-    public void afterThrowingMethod(){
+    /*
+     * @AfterThrowing:將方法指定為異常通知(例外通知)
+     * 作用於方法拋出異常時
+     * 可藉由throwing設置接收返回的異常訊息
+     * 在參數列表中可通過具體的異常類型來隊指定的異常進行操作
+     * */
+    @AfterThrowing(value = "execution(* com.spring.aop.*.*(..))", throwing = "ex")
+    public void afterThrowingMethod(Exception ex) {
+        System.out.println("有異常了,message:" + ex);
+    }
 
+    @Around(value = "execution(* com.spring.aop.*.*(..))")
+    public Object aroundMethod(ProceedingJoinPoint proceedingJoinPoint) {
+        Object result = null;
+        try {
+            //前置通知
+            System.out.println("around before");
+            result = proceedingJoinPoint.proceed();//執行方法
+            //返回通知
+            System.out.println("around beforeReturning");
+            return result;
+        } catch (Throwable throwable) {
+            //異常通知
+            throwable.printStackTrace();
+            System.out.println("around afterThrowing");
+        } finally {
+            //後置通知
+            System.out.println("around after");
+        }
+        return -1;//null 不能給int
     }
 }
