@@ -5,8 +5,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
     public static void main(String[] args) {
-        ApplicationContext ac=new ClassPathXmlApplicationContext("aop.xml");
-        MathI math=ac.getBean("mathImpl",MathImpl.class);
-        System.out.println(math.add(5,1));
+        ApplicationContext ac = new ClassPathXmlApplicationContext("aop.xml");
+        MathI math = ac.getBean("mathImpl", MathI.class);
+        System.out.println(math.add(5, 1));
+
+//        TestHandler bean = ac.getBean("testHandler", TestHandler.class);
+//        bean.test();
     }
 }
