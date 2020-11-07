@@ -3,20 +3,28 @@ package com.spring.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Component
 @Aspect//標註當前類為切面
+@Order(1)//定義切面作用的優先權，值越小優先級越高，默認值為int的最大值
 public class MyloggerAspect {
+
+
+    @Pointcut(value =  "execution(* com.spring.aop.*.*(..))")
+    public void  test(){}
+
 
     /*
      * @Before:將方法指定為前置通知
      * 必須設置value，其值為切入點表達式
      * */
     //@Before(value = "execution(public int com.spring.aop.MathImpl.add(int,int))")
-    @Before(value = "execution(* com.spring.aop.*.*(..))")//任意返回修飾  類  .. 任意參數
+//    @Before(value = "execution(* com.spring.aop.*.*(..))")//任意返回修飾  類  .. 任意參數
+    @Before(value = "test()")
     public void beforeMethod(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();//獲取方法的參數
         String methodName = joinPoint.getSignature().getName();//獲取方法名
@@ -27,7 +35,8 @@ public class MyloggerAspect {
      * @After:將方法指定為後置通知
      * 作用於方法的finally區塊，不管有沒有異常都會執行
      * */
-    @After(value = "execution(* com.spring.aop.*.*(..))")
+//    @After(value = "execution(* com.spring.aop.*.*(..))")
+    @After(value = "test()")
     public void afterMethod() {
         System.out.println("後置通知");
     }
