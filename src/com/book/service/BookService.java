@@ -1,4 +1,6 @@
 package com.book.service;
 
-public class BookService {
+public interface BookService {
+
+    void buyBook(String bid,String mid);
 }
