@@ -2,11 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd"
-       >
+       http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"
+>
 
     <context:component-scan base-package="com.book"/>
 
@@ -33,4 +33,26 @@
 
     <!--開啟註解驅動，及對事物相關的註解進行掃描，解析其含義並執行其功能-->
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+    <!--上or下-->
+    <tx:advice id="tx" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <!--在設置好的切入點表達式下再次進行事務配置-->
+            <tx:method name="buyBook" />
+            <tx:method name="checkOut"/>
+            <!--只有select開頭的方法才會被事務處理-->
+            <tx:method name="select*" read-only="true"/>
+            <tx:method name="insert*"/>
+            <tx:method name="update*"/>
+            <tx:method name="delete*"/>
+
+
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置切入點表達式-->
+    <aop:config>
+        <aop:pointcut id="pointCut" expression="execution(* com.book.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="tx" pointcut-ref="pointCut"/>
+    </aop:config>
 </beans>
